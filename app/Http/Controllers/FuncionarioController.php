@@ -12,7 +12,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        //
+        return view('funcionario.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('funcionario.create');
     }
 
     /**
@@ -28,38 +28,30 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Funcionario $funcionario)
-    {
-        //
+        return redirect()->route('funcionario.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Funcionario $funcionario)
+    public function edit($id)
     {
-        //
+        return view('funcionario.edit');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Funcionario $funcionario)
+    public function update(Request $request, $id)
     {
-        //
+        return redirect()->route('funcionario.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Funcionario $funcionario)
+    public function destroy($id)
     {
-        //
+        return redirect()->route('funcionario.index');
     }
 }

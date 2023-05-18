@@ -15,7 +15,7 @@ class Fornecedor extends Model
             'cnpj',
             'telefone'
         ];
-
+        
     public function produto(){
         return $this->hasMany(Produto::class, 'id_produto', 'id');
     }

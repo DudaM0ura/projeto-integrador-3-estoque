@@ -1,35 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <title>Cadastrar</title>
-</head>
-<body>
+@extends('Layout.default')
+@section('content')
 
-    <div class="row col-md-8" style="padding:100px">
-        <h2>EDITAR FORNECEDOR</h2>
-        <form action="{{ route('fornecedor.update', $fornecedor->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Fornecedor</label>
-              <input type="text" class="form-control" name="nome_fornecedor" value="{{ $fornecedor->nome_fornecedor }}">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">cnpj</label>
-              <input type="text" class="form-control" name="cnpj" value="{{ $fornecedor->cnpj }}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">telefone</label>
-                <input type="number" class="form-control" name="telefone" value="{{ $fornecedor->telefone }}">
-              </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-        </form>
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+  <div class="container-fluid py-1 px-3">
+    <nav aria-label="breadcrumb">
+      <h2 class="font-weight-bolder text-white mb-0">Editar cadastro de Fornecedor</h2>
+    </nav>
+    <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+      <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+      </div>
+      <ul class="navbar-nav  justify-content-end">
+        <li class="nav-item d-flex align-items-center">
+          <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+            <i class="fa fa-user me-sm-1"></i>
+            <span class="d-sm-inline d-none">Sign In</span>
+          </a>
+        </li>
+      </ul>
     </div>
-   
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-</html>
+  </div>
+</nav>
+<!-- End Navbar -->
+<div class="container-fluid py-4">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">Editar</h5>
+    </div>
+    <div class="card-body">
+      <form action="{{ route('fornecedor.update', $fornecedor->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nomeFornecedor" name="nome_fornecedor" placeholder="Fornecedor"
+          value="{{ $fornecedor->nome_fornecedor }}">
+          <label for="floatingInput">Fornecedor:</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="cnpj"
+          value="{{ $fornecedor->cnpj }}">
+          <label for="floatingPassword">CNPJ:</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Password"
+          value="{{ $fornecedor->telefone }}">
+          <label for="floatingPassword">Telefone:</label>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          SALVAR ALTERAÇÕES <i class="fa-solid fa-check"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+@endsection

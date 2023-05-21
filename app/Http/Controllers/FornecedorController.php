@@ -30,7 +30,7 @@ class FornecedorController extends Controller
             Passa a Model (Fornecedor) junto com o método para criar registro no banco "create()".
             Variável $request é usada para resgatar os dados enviados no formulário de cadastro.
         */
-        Fornecedor::create($request->all());
+        $salvou = Fornecedor::create($request->all());
         return redirect()->route('fornecedor.index');
     }
 

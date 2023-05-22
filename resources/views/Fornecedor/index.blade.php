@@ -53,9 +53,13 @@
               <th scope="col-md-4">Gerenciar</th>
             </tr>
           </thead>
+          @if ($fornecedores->count() <1 )
+                <span><b>Não existe fornecedores cadastrados</b></span>
+          @endif
           <tbody>
             @foreach ($fornecedores as $fornecedor)
             <tr>
+              
               <td></td>
               <td>{{ strtoupper($fornecedor->nome_fornecedor) }}</td>
               <td>{{ $fornecedor->cnpj }}</td>

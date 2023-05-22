@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Funcao;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,8 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        $funcioarios = Funcionario::with('funcao')->get();
-        return view('funcionario.index', compact('funcionario'));
+        $funcionarios = Funcionario::with('funcao')->get();
+        return view('funcionario.index', compact('funcionarios'));
     }
 
     /**
@@ -21,7 +22,8 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        return view('funcionario.create');
+        $funcoes = Funcao::all();
+        return view('funcionario.create', compact('funcoes'));
     }
 
     /**
@@ -29,8 +31,16 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        Funcionario::create($request->all());
-        return redirect()->route('funcionario.index');
+       $form = [
+            "nome" => $request->nome,
+            "data_nascimento" => $request->data_nascimento,
+            "cpf" => $request->cpf,
+            "id_funcao" => $request->id_funcao,
+        ];
+
+        Funcionario::create($form);
+
+        return redirect()->route('funcionario.index')->with('message','Sucesso! Cadastro realizado.');
     }
 
     /**
@@ -38,8 +48,9 @@ class FuncionarioController extends Controller
      */
     public function edit($id)
     {
-        $produto = Funcionario::find($id);
-        return view('funcionario.edit', compact('funcionario'));
+        $funcionario = Funcionario::with('funcao')->find($id);
+        $funcoes = Funcao::all();
+        return view('funcionario.edit', compact('funcionario', 'funcoes'));
     }
 
     /**
@@ -47,6 +58,7 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         Funcionario::find($id)->update($request->all());
         return redirect()->route('funcionario.index')->with('message','Sucesso! Cadastro editado.');
     }

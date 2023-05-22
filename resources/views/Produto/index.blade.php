@@ -40,6 +40,9 @@
                 <th scope="col-md-2"></th>
               </tr>
             </thead>
+            @if ($produtos->count() <1 )
+                <span><b>Não existe produtos cadastrados</b></span>
+            @endif
             <tbody>
               @foreach ($produtos as $item)
               <tr>

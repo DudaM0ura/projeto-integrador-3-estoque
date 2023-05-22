@@ -37,7 +37,7 @@
                 <th scope="col-md-2">Fornecedor</th>
                 <th scope="col-md-2">Preço</th>
                 <th scope="col-md-2">Validade</th>
-                <th scope="col-md-2">Gerenciar</th>
+                <th scope="col-md-2"></th>
               </tr>
             </thead>
             <tbody>

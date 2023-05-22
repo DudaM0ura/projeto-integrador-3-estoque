@@ -24,10 +24,7 @@ const salvarProduto = (form) =>{
     $.ajax({
         type: "POST",
         url: "/funcionario/cadastrar",
-        data: form,
-        success: function (response) {
-            
-        }
+        data: form
         
     });
 }

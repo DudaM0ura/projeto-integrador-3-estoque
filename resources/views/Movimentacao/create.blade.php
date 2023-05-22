@@ -26,28 +26,28 @@
         <h5 class="card-title">Movimentar</h5>
       </div>
       <div class="card-body">
-        <form action="" method="POST">
+        <form action="{{route('movimentacao.store')}}" method="POST">
           @csrf
-          <select class="form-select mb-3" aria-label="Default select example">
+          <select class="form-select mb-3" aria-label="Default select example" name="id_operacao">
             <option selected>Selecione a operação:</option>
             @foreach ($operacoes as $op)
                 <option value="{{$op->id}}">{{$op->operacao}}</option>
             @endforeach
           </select>
-          <select class="form-select mb-3" aria-label="Default select example">
+          <select class="form-select mb-3" aria-label="Default select example" name="id_produto">
             <option selected>Produto:</option>
             @foreach ($produtos as $item)
-                <option value="{{$item->id}}">{{$item->nome}}</option>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nomeFornecedor" name="nome_fornecedor" 
-                    placeholder="Fornecedor" value="{{$item->fornecedor->nome_fornecedor}}">
-                    <label for="floatingInput">Fornecedor:</label>
-                </div>
+              <option value="{{$item->id}}">{{$item->nome}}</option>
             @endforeach
           </select>
-          
+          <select class="form-select mb-3" aria-label="Default select example" name="id_fornecedor">
+            <option selected>Fornecedor:</option>
+            @foreach ($fornecedores as $forn)
+              <option value="{{$forn->id}}">{{$forn->nome_fornecedor}}</option>
+            @endforeach
+          </select>
           <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="cnpj" name="cnpj" placeholder="cnpj">
+            <input type="number" class="form-control" id="quantidade" name="quantidade" placeholder="quantidade">
             <label for="floatingPassword">Quantidade:</label>
           </div>
           <button type="submit" class="btn btn-primary">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fornecedor;
 use App\Models\Movimentacao;
 use App\Models\Operacao;
 use App\Models\Produto;
@@ -11,30 +12,23 @@ class MovimentacaoController extends Controller
 {
     public function index()
     {
-        $movimentacoes = Movimentacao::with('operacao','produtos')->get();
-        return view('movimentacao.index');
+        $movimentacoes = Movimentacao::with('operacao','produtos', 'produtos.fornecedor')->get();
+        // dd($movimentacoes);
+        return view('movimentacao.index', compact('movimentacoes'));
     }
 
     public function create()
     {
         $operacoes = Operacao::get();
         $produtos = Produto::get();
-        return view('movimentacao.create', compact('operacoes', 'produtos'));
+        $fornecedores = Fornecedor::get();
+        return view('movimentacao.create', compact('operacoes', 'produtos', 'fornecedores'));
     }
 
-    public function salvarEntrada(Request $request)
+    public function store(Request $request)
     {
-        $entrada = Movimentacao::create($request->all());
-        return redirect()->route('movimentacao.index');
-    }
-
-    public function saida()
-    {
-        return view('movimentacao.saida');
-    }
-
-    public function salvarSaida()
-    {
+        // dd($request->all());
+        Movimentacao::create($request->all());
         return redirect()->route('movimentacao.index');
     }
 

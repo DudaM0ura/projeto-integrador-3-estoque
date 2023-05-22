@@ -37,17 +37,17 @@
                 <th scope="col-md-2">Fornecedor</th>
                 <th scope="col-md-2">Quantidade</th>
                 <th scope="col-md-2">Usuario Responsável</th>
-                <th scope="col-md-2">Gerenciar</th>
+                <th scope="col-md-2"></th>
               </tr>
             </thead>
             <tbody>
-              {{-- @foreach ($movimentações as $item) --}}
+              @foreach ($movimentacoes as $item)
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$item->operacao->operacao}}</td>
+                <td>{{$item->produtos->nome}}</td>
+                <td>{{$item->produtos->fornecedor->nome_fornecedor}}</td>
+                <td>{{$item->quantidade}}</td>
+                <td>{{$item->usuario}}</td>
                 <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                         <button type="button" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i> EDITAR</button>
@@ -55,7 +55,7 @@
                     </div>
                 </td>
               </tr>
-              {{-- @endforeach --}}
+              @endforeach
         </table>
       </div>
     </div>

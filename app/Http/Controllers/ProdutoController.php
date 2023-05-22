@@ -14,7 +14,6 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = Produto::with('fornecedor')->get();
-        // dd($produtos);
         return view('produto.index', compact('produtos'));
     }
 
@@ -32,12 +31,8 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        
         Produto::create($request->all());
-        // return response()->json([
-        //     'error' => false,
-        //     'msg' => "Produto cadastrado com sucesso!"
-        // ]);
         return redirect()->route('produtos.index');
     }
 
@@ -47,7 +42,8 @@ class ProdutoController extends Controller
     public function edit($id)
     {
         $produto = Produto::find($id);
-        return view('produto.edit', compact('produto'));
+        $fornecedores = Fornecedor::get();
+        return view('produto.edit', compact('produto', 'fornecedores'));
     }
 
     /**
@@ -55,6 +51,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         Produto::find($id)->update($request->all());
         return redirect()->route('produtos.index')->with('message','Sucesso! Cadastro editado.');
     }

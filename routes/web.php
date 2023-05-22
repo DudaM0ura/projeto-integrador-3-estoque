@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstoqueController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\LoginController;
@@ -66,6 +67,11 @@ Route::controller(MovimentacaoController::class)->group(function (){
     Route::get('/movimentacao/editar/{id}', 'edit')->name('movimentacao.edit');
     Route::put('/movimentacao/editar/{id}', 'update')->name('movimentacao.update');
     Route::delete('/movimentacao/editar/{id}', 'destroy')->name('movimentacao.destroy');
+});
+
+//Rotas de Estoque
+Route::controller(EstoqueController::class)->group(function (){
+    Route::get('/estoque', 'index')->name('estoque.index');
 });
 
 

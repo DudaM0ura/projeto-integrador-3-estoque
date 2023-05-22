@@ -12,7 +12,8 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        return view('funcionario.index');
+        $funcioarios = Funcionario::with('funcao')->get();
+        return view('funcionario.index', compact('funcionario'));
     }
 
     /**
@@ -28,6 +29,7 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
+        Funcionario::create($request->all());
         return redirect()->route('funcionario.index');
     }
 
@@ -36,7 +38,8 @@ class FuncionarioController extends Controller
      */
     public function edit($id)
     {
-        return view('funcionario.edit');
+        $produto = Funcionario::find($id);
+        return view('funcionario.edit', compact('funcionario'));
     }
 
     /**
@@ -44,7 +47,8 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect()->route('funcionario.index');
+        Funcionario::find($id)->update($request->all());
+        return redirect()->route('funcionario.index')->with('message','Sucesso! Cadastro editado.');
     }
 
     /**
@@ -52,6 +56,7 @@ class FuncionarioController extends Controller
      */
     public function destroy($id)
     {
-        return redirect()->route('funcionario.index');
+        Funcionario::destroy($id);
+        return redirect()->route('funcionario.index')->with('message','Sucesso! Cadastro deletado.'); 
     }
 }

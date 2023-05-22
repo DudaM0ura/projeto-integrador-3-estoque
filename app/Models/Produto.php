@@ -18,7 +18,7 @@ class Produto extends Model
     ];
 
     public function fornecedor(){
-        return $this->belongsTo(Fornecedor::class, 'id_produto', 'id');
+        return $this->belongsTo(Fornecedor::class, 'id_fornecedor', 'id');
     }
 
     public function estoque(){

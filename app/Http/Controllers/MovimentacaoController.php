@@ -2,22 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movimentacao;
+use App\Models\Operacao;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class MovimentacaoController extends Controller
 {
     public function index()
     {
+        $movimentacoes = Movimentacao::with('operacao','produtos')->get();
         return view('movimentacao.index');
     }
 
-    public function entrada()
+    public function create()
     {
-        return view('movimentacao.entrada');
+        $operacoes = Operacao::get();
+        $produtos = Produto::get();
+        return view('movimentacao.create', compact('operacoes', 'produtos'));
     }
 
-    public function salvarEntrada()
+    public function salvarEntrada(Request $request)
     {
+        $entrada = Movimentacao::create($request->all());
         return redirect()->route('movimentacao.index');
     }
 

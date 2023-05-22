@@ -30,7 +30,7 @@ class FornecedorController extends Controller
             Passa a Model (Fornecedor) junto com o método para criar registro no banco "create()".
             Variável $request é usada para resgatar os dados enviados no formulário de cadastro.
         */
-        $salvou = Fornecedor::create($request->all());
+        Fornecedor::create($request->all());
         return redirect()->route('fornecedor.index');
     }
 
@@ -59,6 +59,6 @@ class FornecedorController extends Controller
     {
         // Passa a Model Fornecedor junto com o método "destroy()" que recebe o $id como parametro
         Fornecedor::destroy($id);
-        return redirect()->route('fornecedor.index')->with('message','Sucesso! Cadastro deletado.');; 
+        return redirect()->route('fornecedor.index')->with('message','Sucesso! Cadastro deletado.'); 
     }
 }

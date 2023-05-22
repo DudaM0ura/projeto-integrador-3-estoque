@@ -13,13 +13,13 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('../assets/img/apple-icon.png')}}">
+  <link rel="icon" type="image/png" href="{{asset('../assets/img/favicon.png')}}">
   <title>
     Argon Dashboard 2 by Creative Tim
   </title>
@@ -31,9 +31,11 @@
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="{{asset('../assets/css/nucleo-svg.css')}}" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')}}" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('../assets/css/argon-dashboard.css?v=2.0.4')}}" rel="stylesheet" />
+  <!-- Jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -41,7 +43,7 @@
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
       <a class="navbar-brand m-0" href="">
-        <img src="https://w7.pngwing.com/pngs/664/769/png-transparent-colored-pencil-cup-pencil-color-pen.png" class="navbar-brand-img h-120" alt="main_logo">
+        <img src="{{asset('https://w7.pngwing.com/pngs/664/769/png-transparent-colored-pencil-cup-pencil-color-pen.png')}}" class="navbar-brand-img h-120" alt="main_logo">
         <span class="ms-1 font-weight-bold">ESTOQUE PAPELARIA</span>
       </a>
     </div>
@@ -63,7 +65,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/billing.html">
+          <a class="nav-link " href="{{ route('movimentacao.index')}}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
@@ -191,9 +193,10 @@
     }
   </script>
   <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script async defer src="{{asset('https://buttons.github.io/buttons.js')}}"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{asset('../assets/js/argon-dashboard.min.js?v=2.0.4')}}"></script>
+  
 </body>
 
 </html>

@@ -61,10 +61,8 @@ Route::controller(FuncionarioController::class)->group(function (){
 // Rotas crud de Movimentações
 Route::controller(MovimentacaoController::class)->group(function (){
     Route::get('/movimentacoes', 'index')->name('movimentacao.index');
-    Route::get('/movimentacao/entrada', 'entrada')->name('movimentacao.create');
-    Route::post('/movimentacao/entrada', 'salvarEntrada')->name('movimentacao.store');
-    Route::get('/movimentacao/saida', 'saida')->name('movimentacao.create');
-    Route::post('/movimentacao/saida', 'salvarSaida')->name('movimentacao.store');
+    Route::get('/movimentacao/cadastrar', 'create')->name('movimentacao.create');
+    Route::post('/movimentacao/entrada', 'store')->name('movimentacao.store');
     Route::get('/movimentacao/editar/{id}', 'edit')->name('movimentacao.edit');
     Route::put('/movimentacao/editar/{id}', 'update')->name('movimentacao.update');
     Route::delete('/movimentacao/editar/{id}', 'destroy')->name('movimentacao.destroy');

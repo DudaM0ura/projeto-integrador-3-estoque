@@ -8,14 +8,6 @@
       <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
         <div class="ms-md-auto pe-md-3 d-flex align-items-center">
         </div>
-        <ul class="navbar-nav  justify-content-end">
-          <li class="nav-item d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-              <i class="fa fa-user me-sm-1"></i>
-              <span class="d-sm-inline d-none">Sign In</span>
-            </a>
-          </li>
-        </ul>
       </div>
     </div>
   </nav>
@@ -54,7 +46,22 @@
                 <td>{{$item->quantidade}}</td>
                 <td>{{$item->usuario}}</td>
                 <td>
-                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                  <div class="row">
+                    <div class="col-6">
+                      <a type="button" class="btn btn-secondary" href="{{route('movimentacao.edit', $item->id)}}">
+                        <i class="fa-solid fa-pen-to-square"></i> EDITAR</a>
+                    </div>
+                    <div class="col-6">
+                      <form action="{{route('movimentacao.destroy', $item->id)}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger">
+                          EXCLUIR <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                    {{-- <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                         <a type="button" class="btn btn-secondary" href="{{route('movimentacao.edit', $item->id)}}">
                           <i class="fa-solid fa-pen-to-square"></i> EDITAR</a>
                           <form action="{{route('movimentacao.destroy', $item->id)}}" method="POST">
@@ -64,7 +71,7 @@
                               EXCLUIR <i class="fa-solid fa-trash-can"></i>
                             </button>
                           </form>
-                    </div>
+                    </div> --}}
                 </td>
               </tr>
               @endforeach

@@ -53,49 +53,33 @@
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('fornecedor.index') }}">
+          <a class="nav-link" href="{{ route('fornecedor.index') }}">
             <i class="fa-solid fa-handshake"></i>
             <span class="nav-link-text ms-1">FORNECEDORES</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{{ route('produtos.index') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
+            <i class="fa-solid fa-inbox"></i>
             <span class="nav-link-text ms-1">PRODUTOS</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{{ route('movimentacao.index')}}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
-            </div>
+            <i class="fa-solid fa-right-left"></i>  
             <span class="nav-link-text ms-1">MOVIMENTAÇÕES</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{{ route('estoque.index')}}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
-            </div>
+              <i class="fa-solid fa-layer-group"></i>
             <span class="nav-link-text ms-1">ESTOQUE</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{{route('funcionario.index')}}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-app text-info text-sm opacity-10"></i>
-            </div>
+            <i class="fa-solid fa-users"></i>
             <span class="nav-link-text ms-1">FUNCIONÁRIOS</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="../pages/sign-up.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-info text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Logout</span>
           </a>
         </li>
       </ul>

@@ -41,26 +41,28 @@
         <a href="{{ route('fornecedor.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> CADASTRAR FORNECEDOR</a>
       </div>
       <h5 class="card-title">Todos os Fornecedores</h5>
+      @if(session('sucesso'))
+        <div class="alert alert-success" role="alert">
+           <strong>{{session('sucesso')}}</strong> 
+        </div>
+      @endif
     </div>
     <div class="card-body">
-        <table class="table">
+        <table class="table table-striped" id="table">
           <thead>
             <tr>
-              <th scope="col-md-2">#</th>
               <th scope="col-md-2">Fornecedor</th>
               <th scope="col-md-2">Cnpj</th>
               <th scope="col-md-2">Telefone</th>
-              <th scope="col-md-4">Gerenciar</th>
+              <th scope="col-md-4"></th>
             </tr>
           </thead>
-          @if ($fornecedores->count() <1 )
-                <span><b>Não existe fornecedores cadastrados</b></span>
-          @endif
           <tbody>
+            @if ($fornecedores->count() <1 )
+                  <span><b>Não existe fornecedores cadastrados</b></span>
+            @endif
             @foreach ($fornecedores as $fornecedor)
             <tr>
-              
-              <td></td>
               <td>{{ strtoupper($fornecedor->nome_fornecedor) }}</td>
               <td>{{ $fornecedor->cnpj }}</td>
               <td>{{ $fornecedor->telefone }}</td>

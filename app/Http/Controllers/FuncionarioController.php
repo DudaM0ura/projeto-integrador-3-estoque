@@ -40,7 +40,7 @@ class FuncionarioController extends Controller
 
         Funcionario::create($form);
 
-        return redirect()->route('funcionario.index')->with('message','Sucesso! Cadastro realizado.');
+        return redirect()->route('funcionario.index')->with('sucesso','Sucesso! Cadastro realizado.');
     }
 
     /**
@@ -60,7 +60,7 @@ class FuncionarioController extends Controller
     {
         
         Funcionario::find($id)->update($request->all());
-        return redirect()->route('funcionario.index')->with('message','Sucesso! Cadastro editado.');
+        return redirect()->route('funcionario.index')->with('sucesso','Sucesso! Cadastro editado.');
     }
 
     /**
@@ -69,6 +69,6 @@ class FuncionarioController extends Controller
     public function destroy($id)
     {
         Funcionario::destroy($id);
-        return redirect()->route('funcionario.index')->with('message','Sucesso! Cadastro deletado.'); 
+        return redirect()->route('funcionario.index')->with('sucesso','Sucesso! Cadastro deletado.'); 
     }
 }

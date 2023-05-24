@@ -31,7 +31,7 @@ class FornecedorController extends Controller
             Variável $request é usada para resgatar os dados enviados no formulário de cadastro.
         */
         Fornecedor::create($request->all());
-        return redirect()->route('fornecedor.index');
+        return redirect()->route('fornecedor.index')->with('sucesso', 'Cadastro realizado com sucesso!');
     }
 
     // Função que retorna a view de editar

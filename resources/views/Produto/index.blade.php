@@ -27,12 +27,16 @@
           <a href="{{ route('produtos.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> CADASTRAR PRODUTO</a>
         </div>
         <h5 class="card-title">Todos os Produtos</h5>
+        @if(session('sucesso'))
+        <div class="alert alert-success" role="alert">
+           <strong>{{session('sucesso')}}</strong> 
+        </div>
+      @endif
       </div>
       <div class="card-body">
-          <table class="table">
+          <table class="table table-striped" id="table">
             <thead>
               <tr>
-                <th scope="col-md-2">#</th>
                 <th scope="col-md-2">Descrição</th>
                 <th scope="col-md-2">Fornecedor</th>
                 <th scope="col-md-2">Preço</th>
@@ -40,13 +44,12 @@
                 <th scope="col-md-2"></th>
               </tr>
             </thead>
-            @if ($produtos->count() <1 )
-                <span><b>Não existe produtos cadastrados</b></span>
-            @endif
             <tbody>
+              @if ($produtos->count() <1 )
+                  <span><b>Não existe produtos cadastrados</b></span>
+              @endif
               @foreach ($produtos as $item)
               <tr>
-                <td></td>
                 <td>{{ strtoupper($item->nome) }}</td>
                 <td>{{ $item->fornecedor->nome_fornecedor}}</td>
                 <td>{{ $item->preco }}</td>

@@ -27,9 +27,14 @@
           <a href="{{ route('movimentacao.create') }}" class="btn btn-primary"><i class="fa-solid fa-arrow-right-arrow-left"></i> NOVA MOVIMENTAÇÃO</a>
         </div>
         <h5 class="card-title">Movimentações</h5>
+        @if(session('sucesso'))
+        <div class="alert alert-success" role="alert">
+           <strong>{{session('sucesso')}}</strong> 
+        </div>
+        @endif
       </div>
       <div class="card-body">
-          <table class="table">
+          <table class="table table-striped" id="table">
             <thead>
               <tr>
                 <th scope="col-md-2">Operação</th>
@@ -50,8 +55,15 @@
                 <td>{{$item->usuario}}</td>
                 <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                        <button type="button" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i> EDITAR</button>
-                        <button type="button" class="btn btn-danger">EXCLUIR <i class="fa-solid fa-trash-can"></i></button>
+                        <a type="button" class="btn btn-secondary" href="{{route('movimentacao.edit', $item->id)}}">
+                          <i class="fa-solid fa-pen-to-square"></i> EDITAR</a>
+                          <form action="{{route('movimentacao.destroy', $item->id)}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger">
+                              EXCLUIR <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                          </form>
                     </div>
                 </td>
               </tr>

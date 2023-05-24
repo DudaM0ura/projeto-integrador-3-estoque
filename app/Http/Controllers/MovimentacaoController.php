@@ -13,7 +13,7 @@ class MovimentacaoController extends Controller
     public function index()
     {
         $movimentacoes = Movimentacao::with('operacao','produtos', 'produtos.fornecedor')->get();
-        // dd($movimentacoes);
+        // dd($movimentacoess)->toArray();
         return view('movimentacao.index', compact('movimentacoes'));
     }
 
@@ -27,23 +27,29 @@ class MovimentacaoController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         Movimentacao::create($request->all());
-        return redirect()->route('movimentacao.index');
+        return redirect()->route('movimentacao.index')->with('sucesso', 'Cadastro realizado com sucesso!');
     }
 
     public function edit($id)
     {
-        return view('movimentacao.edit');
+        $operacoes = Operacao::get();
+        $produtos = Produto::get();
+        $fornecedores = Fornecedor::get();
+        $movimentacao = Movimentacao::with('produtos', 'produtos.fornecedor', 'operacao')->find($id);
+        return view('movimentacao.edit', compact('movimentacao', 'operacoes', 'produtos', 'fornecedores'));
     }
 
     public function update(Request $request, $id)
     {
-        return redirect()->route('movimentacao.index');
+        // dd($request->all());
+        Movimentacao::find($id)->update($request->all());
+        return redirect()->route('movimentacao.index')->with('sucesso', 'Cadastro atualizado com sucesso!');
     }
 
     public function destroy($id)
     {
-        return redirect()->route('movimentacao.index');
+        Movimentacao::destroy($id);
+        return redirect()->route('movimentacao.index')->with('sucesso','Sucesso! Movimentação deletada.'); 
     }
 }

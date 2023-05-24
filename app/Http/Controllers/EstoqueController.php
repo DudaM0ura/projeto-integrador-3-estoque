@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estoque;
+use App\Models\Movimentacao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EstoqueController extends Controller
 {
@@ -12,55 +14,16 @@ class EstoqueController extends Controller
      */
     public function index()
     {
-        
-        return view('estoque.index');
+        $produtosEmEstoque = DB::select(
+                                        "SELECT produtos.id, produtos.nome, fornecedores.nome_fornecedor, SUM(CASE WHEN movimentacoes.id_operacao = 1 THEN movimentacoes.quantidade ELSE -movimentacoes.quantidade END) AS quantidade_estoque
+                                        FROM produtos
+                                        JOIN movimentacoes ON produtos.id = movimentacoes.id_produto
+                                        JOIN fornecedores ON fornecedores.id = produtos.id_fornecedor
+                                        GROUP BY produtos.id, produtos.nome
+                                    "); 
+// dd($produtosEmEstoque);
+        return view('estoque.index', compact('produtosEmEstoque'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Estoque $estoque)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Estoque $estoque)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Estoque $estoque)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Estoque $estoque)
-    {
-        //
-    }
+   
 }

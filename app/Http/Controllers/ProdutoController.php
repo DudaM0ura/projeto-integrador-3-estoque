@@ -33,7 +33,7 @@ class ProdutoController extends Controller
     {
         
         Produto::create($request->all());
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.index')->with('sucesso', 'Cadastro realizado com sucesso!');
     }
 
     /**
@@ -51,9 +51,8 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         Produto::find($id)->update($request->all());
-        return redirect()->route('produtos.index')->with('message','Sucesso! Cadastro editado.');
+        return redirect()->route('produtos.index')->with('sucesso','Sucesso! Cadastro editado.');
     }
 
 }
